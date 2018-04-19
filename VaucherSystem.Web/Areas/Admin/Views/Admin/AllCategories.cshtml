@@ -1,0 +1,21 @@
+﻿@model PagedList.IPagedList<VaucherSystem.Models.ViewModels.Admin.CategoryViewModel>
+@using PagedList.Mvc
+
+
+@using (Ajax.BeginForm("AllCategories", "Admin", new { area = "" }, new AjaxOptions()
+{
+    UpdateTargetId = "element-to-replace",
+    HttpMethod = "get",
+    InsertionMode = InsertionMode.Replace
+}, new { @class = "form-inline", role = "form" }))
+{
+
+}
+
+
+<div class="col-md-12 pager">
+    <h3>Categories</h3>
+    <div id="element-to-replace">
+        @Html.Partial("_AllCategories")
+    </div>
+</div>

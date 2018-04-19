@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title Vauchers System</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Vaucher.com", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>@Html.ActionLink("Top Vaucher", "TopVaucher", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("All Vouchers", "Index", "Home", new { area = "" }, null)</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content dropup">
+        @Html.Partial("_Notifications")
+            @RenderBody()
+        <hr />
+        <footer>
+            <ul class="nav navbar-nav navbar-left">
+                <li>@Html.ActionLink("About Us", "About", "Home", new { area = "" }, new { id = "somet" })</li>
+                <li>@Html.ActionLink("Contact Us", "Contact", "Home", new { area = "" }, new { id = "another" })</li>
+                <li>@Html.ActionLink("Terms&Conditions", "TermsAndConditions", "Home", new { area = "" }, new { id = "another" })</li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" class="dropdown-toggle alert alert-success" data-toggle="dropdown" role="menu">Become a Partner</a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Register", "MerchantRegister", "Account", new { area = "" }, htmlAttributes: new { @class = "dropdown open" })</li>
+                        <li>@Html.ActionLink("Login", "Login", "Account", new { area = "" }, htmlAttributes: new { @class = "dropdown open" })</li>
+                    </ul>
+                </li>
+            </ul>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

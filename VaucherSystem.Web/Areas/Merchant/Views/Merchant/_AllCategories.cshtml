@@ -1,0 +1,6 @@
+﻿@model VaucherSystem.Models.ViewModels.Merchant.CategoryNameViewModel
+
+<div class="col-md-10">
+    @Html.DropDownListFor(m => m.CategoryName, new SelectList(Model.CategoryName, "Select Category"), new
+{ @class = "form-control" })
+</div>

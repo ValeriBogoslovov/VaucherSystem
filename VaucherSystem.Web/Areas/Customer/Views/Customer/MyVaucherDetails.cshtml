@@ -1,0 +1,44 @@
+﻿@model VaucherSystem.Models.ViewModels.Customer.CustomerVaucherDetailsViewModel
+
+<div class="container">
+    <div class="row">
+        <h1 class="text-center">Vaucher Details</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default coupon">
+                <div class="panel-body">
+                    <div class="col-md-9">
+                        <ul class="items">
+                            <li><strong>Merchant name: </strong>@Model.MerchantName</li>
+                            <li><strong>Customer email: </strong>@Model.CustomerEmail</li>
+                            <li><strong>Customer First name:</strong>@Model.CustomerFirstname</li>
+                            <li><strong>Customer Last name: </strong>@Model.CustomerLastname</li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="offer">
+                            <span class="number">@Model.DiscountedPrice lv</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="coupon-code">
+                        Code: @Model.UniqueCode.ToUpper()
+                        <span class="print">
+                            <button onclick="myFunction()" class="btn btn-success">Print vaucher</button>
+                        </span>
+                    </div>
+                    <div class="exp">Expires: @Model.EndDate</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function myFunction() {
+    window.print();
+}
+</script>

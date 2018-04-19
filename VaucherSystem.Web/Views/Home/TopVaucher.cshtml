@@ -1,0 +1,20 @@
+﻿@model VaucherSystem.Models.ViewModels.Home.VaucherViewModel
+
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <img src="@Url.Action("ShowImage", "Home", new { vaucherId = Model.Id})">
+                <div class="caption">
+                    <h4>@Model.Name</h4>
+                    <p><strong>Quantity: </strong>@Model.Quantity</p>
+                    <p><strong>Regular Price: </strong>@Model.Price lv</p>
+                    <p><strong>Discount: </strong>@Model.Discount%</p>
+                    <p><strong>Discounted Price: </strong>@Model.DiscountedPrice lv</p>
+                    <p>@Html.ActionLink("Details", "VaucherDetails", "Home", new { area = "", vaucherId = Model.Id }, new { @class = "btn btn-info" })</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

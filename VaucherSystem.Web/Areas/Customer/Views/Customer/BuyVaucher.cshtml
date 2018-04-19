@@ -1,0 +1,23 @@
+﻿@model VaucherSystem.Models.ViewModels.Customer.BuyVaucherViewModel
+
+@{ 
+    ViewBag.Title = "Buy Vaucher";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("BuyVaucher", "Customer", new { area = "Customer" }, FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Buy this vaucher?</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="form-group-input">My label</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="form-group-input" placeholder="My label">
+        </div>
+    </div>
+}
+

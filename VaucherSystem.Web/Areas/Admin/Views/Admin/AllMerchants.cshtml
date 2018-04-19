@@ -1,0 +1,23 @@
+﻿@model PagedList.IPagedList<VaucherSystem.Models.ViewModels.Admin.MerchantViewModel>
+@using PagedList.Mvc
+
+<div class="row">
+@using (Ajax.BeginForm("AllMerchants", "Admin", new { area = "" }, new AjaxOptions()
+{
+    UpdateTargetId = "element-to-replace",
+    HttpMethod = "get",
+    InsertionMode = InsertionMode.Replace
+}, new { @class = "form-inline", role = "form" }))
+{
+}
+
+
+<div class="col-md-8 pager">    
+    <h3>Merchants</h3>
+    <div id="element-to-replace">
+        @Html.Partial("_AllMerchants")
+    </div>
+</div>
+
+<div class="col-md-4" id="merchant-details" style="margin-top: 6%"></div>
+</div>

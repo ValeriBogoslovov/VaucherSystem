@@ -1,0 +1,14 @@
+﻿@model VaucherSystem.Models.ViewModels.Admin.CustomerDetailsViewModel
+
+<div><strong>Email:</strong> @Model.Email</div>
+<div><strong>Phone Number:</strong> @Model.PhoneNumber</div>
+<div><strong>Bought Vauchers:</strong> @Model.BoughtVauchers</div>
+<div><strong>Username:</strong> @Model.Username</div>
+<div>
+    @using (Html.BeginForm("BanCustomer", "Admin", FormMethod.Post, new { area = "" }))
+    {
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="Username" value="@Model.Username" />
+        <button class="btn btn-danger" type="submit">Ban User</button>
+    }
+</div>

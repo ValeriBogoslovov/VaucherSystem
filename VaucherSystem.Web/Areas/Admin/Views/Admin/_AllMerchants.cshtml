@@ -1,0 +1,47 @@
+﻿
+@model PagedList.IPagedList<VaucherSystem.Models.ViewModels.Admin.MerchantViewModel>
+@using PagedList.Mvc
+
+
+<table class="table table-striped table-hover table-bordered table-condensed table-responsive">
+    <thead>
+        <tr>
+            <th>Merchant Id</th>
+            <th>Company Name</th>
+            <th>Responsible Person</th>
+            <th>UIC</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody class="align-left-text">
+        @foreach (var merchant in Model)
+            {
+            <tr class="info">
+                <td>@merchant.Id</td>
+                <td>@merchant.Name</td>
+                <td>@merchant.ResponsiblePerson</td>
+                <td>@merchant.UIC</td>
+                <td>
+                    @Ajax.ActionLink("Details", "MerchantDetails", "Admin", new { area = "", Id = merchant.Id }, new AjaxOptions
+           {
+               HttpMethod = "GET",
+               InsertionMode = InsertionMode.Replace,
+               UpdateTargetId = "merchant-details"
+           })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@Html.PagedListPager(Model, page => Url.Action("AllMerchant",
+    new { page = page }),
+    new PagedListRenderOptions
+    {
+        LinkToFirstPageFormat = "<< Primera",
+        LinkToPreviousPageFormat = "< Previous",
+        LinkToNextPageFormat = "Next >",
+        LinkToLastPageFormat = "&Uacute;ltima >>"
+    })
+

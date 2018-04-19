@@ -1,0 +1,46 @@
+﻿@model PagedList.IPagedList<VaucherSystem.Models.ViewModels.Admin.BannedCustomerViewModel>
+@using PagedList.Mvc
+
+
+<table class="table table-striped table-hover table-bordered table-condensed table-responsive">
+    <thead>
+        <tr>
+            <th>Customer Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+            <th>UnBan</th>
+        </tr>
+    </thead>
+    <tbody class="align-left-text">
+
+        @foreach (var customer in Model)
+            {
+            <tr class="info">
+                <td>@customer.Id</td>
+                <td>@customer.FirstName</td>
+                <td>@customer.LastName</td>
+                <td>@customer.Username</td>
+                <td>
+                    @using (Html.BeginForm("UnBanCustomer", "Admin", FormMethod.Post, new { area = "" }))
+                {
+                        @Html.AntiForgeryToken()
+                    <input type="hidden" name="Username" value="@customer.Username" />
+                    <button class="btn btn-primary" type="submit">UnBan</button>
+                }
+            </td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+
+@Html.PagedListPager(Model, page => Url.Action("BannedCustomers",
+    new { page = page }),
+    new PagedListRenderOptions
+    {
+        LinkToFirstPageFormat = "<< Primera",
+        LinkToPreviousPageFormat = "< Previous",
+        LinkToNextPageFormat = "Next >",
+        LinkToLastPageFormat = "&Uacute;ltima >>"
+    })

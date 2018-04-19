@@ -1,0 +1,13 @@
+﻿@using Microsoft.AspNet.Identity
+
+<li>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Hello @User.Identity.Name!</a>
+    <ul class="dropdown-menu">
+        <li>@Html.ActionLink("My Profile", "Index", "Manage", new { Area = "" }, htmlAttributes: new { title = "Manage", @class = "dropdown open" })</li>
+        <li>@Html.ActionLink("My Active Vauchers", "MyActiveVauchers", "Merchant", new { Area = "Merchant", page = 1 }, htmlAttributes: new { title = "Manage", @class = "dropdown open" })</li>
+        <li>@Html.ActionLink("My Passed Vauchers", "MyPassedVauchers", "Merchant", new { Area = "Merchant", page = 1 }, htmlAttributes: new { title = "Manage", @class = "dropdown open" })</li>
+        <li>@Html.ActionLink("Create Vaucher", "CreateVaucher", "Merchant", new { Area = "Merchant" }, htmlAttributes: new { title = "Manage", @class = "dropdown open" })</li>
+        <li>@Html.ActionLink("My Bought Vauchers", "BoughtVauchers", "Merchant", new { Area = "Merchant"}, htmlAttributes: new { title = "Manage", @class = "dropdown open" })</li>
+
+    </ul>
+</li>

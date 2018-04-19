@@ -1,0 +1,50 @@
+﻿@model PagedList.IPagedList<VaucherSystem.Models.ViewModels.Admin.CategoryViewModel>
+@using PagedList.Mvc
+
+<div id="add-category"></div>
+<table class="table table-bordered table-striped table-hover table-responsive table-condensed">
+    <thead>
+        <tr>
+            <th>Category Id</th>
+            <th>Name</th>
+            <th>
+                @Ajax.ActionLink("Add", "AddCategory", "Admin", new { area = "" }, new AjaxOptions
+           {
+               HttpMethod = "GET",
+               InsertionMode = InsertionMode.Replace,
+               UpdateTargetId = "add-category"
+           }, new { @class = "btn btn-primary" })
+            </th>
+        </tr>
+    </thead>
+    <tbody class="align-left-text">
+        @foreach (var category in Model)
+            {
+            <tr >
+                <td class="info">@category.Id</td>
+                <td class="success">@category.Name</td>
+                <td>
+                    @using (Html.BeginForm("RemoveCategory", "Admin", FormMethod.Post, new { area = "Admin" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input name="Id" type="hidden" value="@category.Id" />
+                        <button class="btn btn-danger" type="submit">Remove</button>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@Html.PagedListPager(Model, page => Url.Action("AllCategories",
+    new { page = page }),
+    new PagedListRenderOptions
+    {
+        LinkToFirstPageFormat = "<< Primera",
+        LinkToPreviousPageFormat = "< Previous",
+        LinkToNextPageFormat = "Next >",
+        LinkToLastPageFormat = "&Uacute;ltima >>"
+    })
+
+
+

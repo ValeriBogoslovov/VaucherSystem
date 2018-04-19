@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @if (this.User.IsInRole("Administrator"))
+                {
+                    @Html.Partial("~/Areas/Admin/Views/_AdminDropDown.cshtml")
+                }
+                else if(this.User.IsInRole("Customer"))
+                {
+                    @Html.Partial("~/Areas/Customer/Views/_CustomerDropDown.cshtml");
+                }
+                else if (this.User.IsInRole("Merchant"))
+                {
+                    @Html.Partial("~/Areas/Merchant/Views/_MerchantDropDown.cshtml")
+                }
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("User Register", "CustomerRegister", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

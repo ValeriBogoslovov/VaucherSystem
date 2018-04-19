@@ -1,0 +1,25 @@
+﻿@model PagedList.IPagedList<VaucherSystem.Models.ViewModels.Home.VaucherViewModel>
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@using (Ajax.BeginForm("Index", "Home", new { area = "" }, new AjaxOptions()
+{
+    UpdateTargetId = "element-to-replace-",
+    HttpMethod = "get",
+    InsertionMode = InsertionMode.Replace
+}, new { @class = "form-inline", role = "form" }))
+{
+}
+
+<div class="col-md-12 pager">
+    @*@Html.Action("CheckboxCategories")*@
+    <h3>All Vauchers</h3>
+    <div id="element-to-replace">
+        @Html.Partial("_AllVauchers")
+    </div>
+</div>
+
+

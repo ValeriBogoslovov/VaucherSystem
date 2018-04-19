@@ -1,0 +1,24 @@
+﻿@model IEnumerable<VaucherSystem.Models.ViewModels.Merchant.BoughtVauchersViewModel>
+
+<table class="table table-striped table-hover table-bordered table-condensed table-responsive">
+    <thead>
+        <tr>
+            <th>Vaucher Id</th>
+            <th>Name</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody class="align-left-text">
+
+        @foreach (var vaucher in Model)
+            {
+            <tr class="info">
+                <td>@vaucher.Id</td>
+                <td>@vaucher.Name</td>
+                <td>
+                    @Html.ActionLink("Details", "BoughtVaucherDetails", "Merchant", new { area = "Merchant", Id = vaucher.Id }, null)
+                </td>
+            </tr>
+            }
+    </tbody>
+</table>

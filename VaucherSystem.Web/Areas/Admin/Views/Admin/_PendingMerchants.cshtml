@@ -1,0 +1,47 @@
+﻿@model PagedList.IPagedList<VaucherSystem.Models.ViewModels.Admin.MerchantViewModel>
+@using PagedList.Mvc
+
+
+<table class="table table-striped table-hover table-bordered table-condensed table-responsive">
+    <thead>
+        <tr>
+            <th>Merchant Id</th>
+            <th>Company Name</th>
+            <th>Responsible Person</th>
+            <th>UIC</th>
+            <th>Allow Access</th>
+        </tr>
+    </thead>
+    <tbody class="align-left-text">
+
+        @foreach (var merchant in Model)
+            {
+            <tr class="info">
+                <td>@merchant.Id</td>
+                <td>@merchant.Name</td>
+                <td>@merchant.ResponsiblePerson</td>
+                <td>@merchant.UIC</td>
+                <td>
+                    @using (Html.BeginForm("AllowAccess", "Admin", FormMethod.Post, new { area = "" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="Id" value="@merchant.Id" />
+                        <button class="btn btn-primary" type="submit">Allow Access</button>
+                    }
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+@Html.PagedListPager(Model, page => Url.Action("AllPendingMerchant",
+    new { page = page }),
+    new PagedListRenderOptions
+    {
+        LinkToFirstPageFormat = "<< Primera",
+        LinkToPreviousPageFormat = "< Previous",
+        LinkToNextPageFormat = "Next >",
+        LinkToLastPageFormat = "&Uacute;ltima >>"
+    })
+

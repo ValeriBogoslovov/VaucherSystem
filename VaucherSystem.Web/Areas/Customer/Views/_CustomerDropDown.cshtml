@@ -1,0 +1,9 @@
+﻿@using Microsoft.AspNet.Identity
+
+<li>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Hello @User.Identity.GetUserName()!</a>
+    <ul class="dropdown-menu">
+        <li>@Html.ActionLink("My Profile", "MyProfile", "Customer", new { Area = "Customer" }, htmlAttributes: new { title = "Profile", @class = "dropdown open" })</li>
+        <li>@Html.ActionLink("My Vauchers", "MyVauchers", "Customer", new { Area = "Customer"}, htmlAttributes: new { title = "My Vauchers", @class = "dropdown open" })</li>
+    </ul>
+</li>

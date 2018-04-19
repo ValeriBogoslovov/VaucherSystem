@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNet.Identity
+
+<li>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Admin</a>
+    <ul class="dropdown-menu">
+        <li>@Html.ActionLink("Pending Merchants", "AllPendingMerchants", "Admin", new { Area = "", page = 1 }, htmlAttributes: new { title = "Check Pending Merchants", @class = "dropdown open" })</li>
+        <li>@Html.ActionLink("Pending Vauchers", "PendingVauchers", "Admin", new { Area = "", page = 1 }, htmlAttributes: new { title = "Check Pending Vauchers", @class = "dropdown open" })</li>
+        <li>@Html.ActionLink("Banned Customers", "BannedCustomers", "Admin", new { Area = "", page = 1 }, htmlAttributes: new { title = "Check Banned Customers", @class = "dropdown open" })</li>
+        <li>@Html.ActionLink("All Merchants", "AllMerchants", "Admin", new { Area = "", page = 1 }, htmlAttributes: new { title = "All Merchants", @class = "dropdown open" })</li>
+        <li>@Html.ActionLink("All Customers", "AllCustomers", "Admin", new { Area = "", page = 1 }, htmlAttributes: new { title = "All Customers", @class = "dropdown open" })</li>
+        <li>@Html.ActionLink("All Categories", "AllCategories", "Admin", new { Area = "", page = 1 }, htmlAttributes: new { title = "All Categories", @class = "dropdown open" })</li>
+    </ul>
+</li>
+
+<li>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Hello @User.Identity.GetUserName()!</a>
+    <ul class="dropdown-menu">
+        <li>@Html.ActionLink("My Profile", "Index", "Manage", new { Area = "" }, htmlAttributes: new { title = "Manage", @class = "dropdown open" })</li>
+
+    </ul>
+</li>

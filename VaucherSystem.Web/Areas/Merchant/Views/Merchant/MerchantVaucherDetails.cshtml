@@ -1,0 +1,23 @@
+﻿@model VaucherSystem.Models.ViewModels.Merchant.VaucherDetailsViewModel
+
+<div class="container" style="margin-top: 5px">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="thumbnail">
+                <img class="mySlideshow" src="@Url.Action("MerchantVaucherImage", "Merchant", new { vaucherId = Model.Id })">
+                <div class="caption">
+                    <h4>@Model.Name</h4>
+                    <p><strong>Quantity: </strong>@Model.Quantity</p>
+                    <p><strong>Regular Price: </strong>@Model.Price</p>
+                    <p><strong>Discount: </strong>@Model.Discount%</p>
+                    <p><strong>Discounted Price: </strong>@Model.DiscountedPrice</p>
+                    <p><strong>Category: </strong>@Model.CategoryName</p>
+                    <p><strong>Ends at: </strong>@Model.EndDate</p>
+                    <div><strong>Description: </strong>@Model.Description</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/slideshow");

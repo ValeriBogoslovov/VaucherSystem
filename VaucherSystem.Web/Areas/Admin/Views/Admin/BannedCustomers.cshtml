@@ -1,0 +1,21 @@
+﻿@model PagedList.IPagedList<VaucherSystem.Models.ViewModels.Admin.BannedCustomerViewModel>
+@using PagedList.Mvc
+
+
+@using (Ajax.BeginForm("BannedCustomers", "Admin", new { area = "" }, new AjaxOptions()
+{
+    UpdateTargetId = "element-to-replace",
+    HttpMethod = "GET",
+    InsertionMode = InsertionMode.Replace
+}, new { @class = "form-inline", role = "form" }))
+{
+
+}
+
+
+<div class="col-md-12 pager">
+    <h3>Banned Customers</h3>
+    <div id="element-to-replace">
+        @Html.Partial("_BannedCustomers")
+    </div>
+</div>

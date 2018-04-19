@@ -1,0 +1,7 @@
+﻿@using (Html.BeginForm("AddCategory", "Admin", FormMethod.Post, new { area = ""}))
+{
+            @Html.AntiForgeryToken()
+    <label for="Name">Category Name</label>
+    <input type="text" name="Name" />
+    <button class="btn btn-primary" type="submit">Submit</button>
+}

@@ -1,0 +1,40 @@
+﻿@model PagedList.IPagedList<VaucherSystem.Models.ViewModels.Merchant.MerchantVaucherViewModel>
+@using PagedList.Mvc
+
+
+<div class="container">
+    <div class="row">
+        @foreach (var vaucher in Model)
+        {
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="@Url.Action("MerchantVaucherImage", "Merchant", new {area ="Merchant", vaucherId = vaucher.Id })">
+                    <div class="caption">
+                        <h4>@vaucher.Name</h4>
+                        <p><strong>Quantity: </strong>@vaucher.Quantity</p>
+                        <p><strong>Regular Price: </strong>@vaucher.Price lv</p>
+                        <p><strong>Discount: </strong>@vaucher.Discount%</p>
+                        <p><strong>Discounted Price: </strong>@vaucher.DiscountedPrice lv</p>
+                        <p><strong>Ended at: </strong>@vaucher.EndDate</p>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+@Html.PagedListPager(Model, page => Url.Action("MyPassedVauchers",
+    new { page = page }),
+    new PagedListRenderOptions
+    {
+        LinkToFirstPageFormat = "<< Primera",
+        LinkToPreviousPageFormat = "< Previous",
+        LinkToNextPageFormat = "Next >",
+        LinkToLastPageFormat = "&Uacute;ltima >>"
+    })
+
+
+
+
+
